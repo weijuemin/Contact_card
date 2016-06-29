@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="description" content="" />
+        <title>Contact card</title>
+                
+<!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+         
+<!-- My script and stylesheet -->
+        <style type="text/css">
+            .container {
+                width: 900px;
+                margin: 60px auto;
+                font-family: sans-serif;
+            }
+            form, #output {
+                display: inline-block;
+                vertical-align: top;
+                padding: 30px;
+            }
+            #output {
+                margin-left: 20px;
+            }
+            .card {
+                border: 3px inset rgb(70,70,70);
+                text-align: center;
+                padding: 10px;
+                margin-bottom: 10px;
+                width: 220px;
+            }
+            .card button {
+                border: 1px solid rgb(200,200,200);
+                background-color: rgba(210,210,210,.8);
+                border-radius: 4px;
+                padding: 5px;
+                cursor: pointer;
+            }
+        </style>
+        <script type="text/javascript">
+            $(function(){
+                $('form').on('submit', function(){
+                    var fn = $('input[name="fname"]').val();
+                    var ln = $('input[name="lname"]').val();
+                    var des = $('textarea').val();
+                    
+                    $('#output').append('<div class="card"><h3>' + fn + ' ' + ln + '</h3><br/><button class="showDes">Click for description!</button></div>');
+                    $('.inputTxt').val("");
+                    $('.showDes').on('click', function(){
+                        $(this).parent().html('<p>' + des + '</p>');
+                    })
+                    return false;
+                })
+            })
+        </script>
+        
+    </head>
+    <body>
+        <div class="container">
+            <form action="#" method="post">
+                <span>First name: </span><input class="inputTxt" name="fname" type="text" /><br/>
+                <span>Last name: </span><input class="inputTxt" name="lname" type="text" /><br/>
+                <span>Description: </span><br/>
+                <textarea class="inputTxt"></textarea><br/><br/>
+                <input name="submit" type="submit" value="Add User" />
+            </form>
+            <div id="output">
+            </div>
+        </div>
+    </body>
+</html>
